@@ -1,0 +1,9 @@
+{
+    "tareas": [
+        {
+            "descripcion": "Estudiar Python",
+            "vencimiento": "2024-11-01", "estado": "pendiente"},{
+                "descripcion": "Revisar proyecto",
+                "vencimiento": "2024-10-29", "estado": "completada"}
+            ]
+        }

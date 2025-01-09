@@ -1,0 +1,16 @@
+{
+    "productos": [
+        {
+            "nombre": "Laptop",
+            "categoria": "Electrónica",
+            "precio": 1000,
+            "stock": 15
+        },
+        {
+            "nombre": "Teclado",
+            "categoria": "Accesorios",
+            "precio": 50,
+            "stock": 30
+        }
+    ]
+}

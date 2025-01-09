@@ -1,0 +1,16 @@
+{
+    "peliculas": [
+        {
+            "titulo": "El Laberinto del Fauno",
+            "director": "Guillermo del Toro",
+            "anyo": 2006,
+            "genero": "Fantasía"
+        },
+        {
+            "titulo": "Mar Adentro",
+            "director": "Alejandro Amenábar",
+            "anyo": 2004,
+            "genero": "Drama"
+        }
+    ]
+}

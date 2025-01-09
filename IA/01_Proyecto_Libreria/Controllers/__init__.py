@@ -1,0 +1,2 @@
+from .bookController import get_book, register_book, down_book, save_book, set_title_book, set_genre_book, set_pages_book, set_publisher_book, set_qty_book, set_state_book, set_year_book
+__all__ = ['get_book','register_book', 'down_book', 'save_book','set_title_book', "set_genre_book", "set_pages_book", "set_publisher_book", "set_qty_book", "set_state_book", "set_year_book"]

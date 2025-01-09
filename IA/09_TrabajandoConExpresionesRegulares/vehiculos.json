@@ -1,0 +1,37 @@
+[
+    {
+      "matricula": "1234ABC",
+      "marca": "Toyota",
+      "modelo": "Corolla",
+      "anyo": 2020,
+      "propietario_email": "juan.perez@example.com"
+    },
+    {
+      "matricula": "5678XYZ",
+      "marca": "Ford",
+      "modelo": "Focus",
+      "anyo": 2018,
+      "propietario_email": "maria.gonzalez@example.com"
+    },
+    {
+      "matricula": "9012DEF",
+      "marca": "Honda",
+      "modelo": "Civic",
+      "anyo": 2021,
+      "propietario_email": "carlos.rodriguez@example.com"
+    },
+    {
+      "matricula": "3456GHI",
+      "marca": "BMW",
+      "modelo": "Serie 3",
+      "anyo": 2019,
+      "propietario_email": "lucia.martin@example.com"
+    },
+    {
+      "matricula": "7890JKL",
+      "marca": "Audi",
+      "modelo": "A4",
+      "anyo": 2022,
+      "propietario_email": "pedro.lopez@example.com"
+    }
+  ]

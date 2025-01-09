@@ -1,0 +1,11 @@
+id,name,surname,dni,email,phone,address,age
+1,Juan,Pérez,12345678A,juan.perez@example.com,666555444,Calle Falsa 123,28
+2,María,García,87654321B,maria.garcia@example.com,665444333,Avenida Siempre Viva 742,34
+3,Carlos,López,45678912C,carlos.lopez@example.com,644333222,Calle Luna 15,22
+4,Lucía,Martínez,78912345D,lucia.martinez@example.com,633222111,Avenida Sol 44,40
+5,Ana,Fernández,34567891E,ana.fernandez@example.com,677111000,Calle Flor 9,26
+6,Pablo,González,65498712F,pablo.gonzalez@example.com,688999888,Avenida Estrella 20,38
+7,Laura,Rodríguez,43219876G,laura.rodriguez@example.com,611888777,Calle Árbol 33,19
+8,David,Hernández,12398745H,david.hernandez@example.com,622777666,Avenida Mar 5,42
+9,Sara,Ramírez,78965432J,sara.ramirez@example.com,699666555,Calle Nube 12,31
+10,Manuel,Torres,98765432K,manuel.torres@example.com,677555444,Calle Río 7,37

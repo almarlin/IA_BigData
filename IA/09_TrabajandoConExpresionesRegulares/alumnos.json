@@ -1,0 +1,37 @@
+[
+    {
+      "nombre": "Juan Pérez López",
+      "email": "juan.perez@example.com",
+      "telefono": "612345678",
+      "codigo_postal": "28001",
+      "curso": "DAW2"
+    },
+    {
+      "nombre": "María González García",
+      "email": "maria.gonzalez@example.com",
+      "telefono": "632987654",
+      "codigo_postal": "08005",
+      "curso": "DAW1"
+    },
+    {
+      "nombre": "Carlos Rodríguez Fernández",
+      "email": "carlos.rodriguez@example.com",
+      "telefono": "639876543",
+      "codigo_postal": "41010",
+      "curso": "ASIR2"
+    },
+    {
+      "nombre": "Lucía Martín Sánchez",
+      "email": "lucia.martin@example.com",
+      "telefono": "661234567",
+      "codigo_postal": "29001",
+      "curso": "DAW2"
+    },
+    {
+      "nombre": "Pedro López Ruiz",
+      "email": "pedro.lopez@example.com",
+      "telefono": "690123456",
+      "codigo_postal": "50001",
+      "curso": "ASIR1"
+    }
+  ]

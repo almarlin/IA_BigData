@@ -1,0 +1,16 @@
+{
+    "libros": [
+        {
+            "titulo": "Cien Años de Soledad",
+            "autor": "Gabriel García Márquez",
+            "genero": "Ficción",
+            "anyo": 1967
+        },
+        {
+            "titulo": "El Quijote",
+            "autor": "Miguel de Cervantes",
+            "genero": "Clásico",
+            "anyo": 1605
+        }
+    ]
+}

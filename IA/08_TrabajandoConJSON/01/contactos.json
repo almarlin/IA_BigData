@@ -1,0 +1,8 @@
+{
+    "contactos": [
+    {"nombre": "Juan", "apellidos": "Pérez", "telefono":
+    "612345678", "correo": "juan@example.com"},
+    {"nombre": "Laura", "apellidos": "Gómez", "telefono":
+    "623456789", "correo": "laura@example.com"}
+    ]
+    }

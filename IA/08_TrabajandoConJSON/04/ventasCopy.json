@@ -1,0 +1,82 @@
+{
+    "ventas": [
+        {
+            "producto": "Laptop",
+            "cantidad": 2,
+            "precio": 1000,
+            "fecha": "2024-10-28"
+        },
+        {
+            "producto": "Teclado",
+            "cantidad": 5,
+            "precio": 50,
+            "fecha": "2024-10-27"
+        },
+        {
+            "producto": "Laptop",
+            "cantidad": 2,
+            "precio": 1000,
+            "fecha": "2024-10-28"
+        },
+        {
+            "producto": "Teclado",
+            "cantidad": 5,
+            "precio": 50,
+            "fecha": "2024-10-27"
+        },
+        {
+            "producto": "Mouse",
+            "cantidad": 10,
+            "precio": 25,
+            "fecha": "2024-10-29"
+        },
+        {
+            "producto": "Monitor",
+            "cantidad": 3,
+            "precio": 300,
+            "fecha": "2024-10-30"
+        },
+        {
+            "producto": "Auriculares",
+            "cantidad": 4,
+            "precio": 80,
+            "fecha": "2024-10-25"
+        },
+        {
+            "producto": "C\u00e1mara",
+            "cantidad": 1,
+            "precio": 500,
+            "fecha": "2024-10-28"
+        },
+        {
+            "producto": "Microfono",
+            "cantidad": 2,
+            "precio": 150,
+            "fecha": "2024-10-26"
+        },
+        {
+            "producto": "Impresora",
+            "cantidad": 2,
+            "precio": 120,
+            "fecha": "2024-10-23"
+        },
+        {
+            "producto": "Laptop",
+            "cantidad": 1,
+            "precio": 1000,
+            "fecha": "2024-10-25"
+        },
+        {
+            "producto": "Teclado",
+            "cantidad": 3,
+            "precio": 50,
+            "fecha": "2024-10-30"
+        },
+        {
+            "producto": "camara",
+            "cantidad": "4",
+            "precio": "400",
+            "fecha": "2024-11-12"
+        }
+    ]
+}

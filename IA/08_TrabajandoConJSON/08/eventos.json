@@ -1,0 +1,16 @@
+{
+    "eventos": [
+        {
+            "titulo": "Conferencia Python",
+            "fecha": "2024-11-15",
+            "ubicacion": "Madrid",
+            "organizador": "PyCon España"
+        },
+        {
+            "titulo": "Taller de IA",
+            "fecha": "2024-12-01",
+            "ubicacion": "Barcelona",
+            "organizador": "TechFest"
+        }
+    ]
+}

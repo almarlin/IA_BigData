@@ -1,0 +1,12 @@
+id,title,year,pages,genre,publisher,state,available,quantity
+1,Dune,1965,896,Ciencia Ficción,Chilton Books,Usado,False,2
+2,1984,1949,328,Distopía,Secker & Warburg,Nuevo,True,5
+3,El Hobbit,1937,310,Fantasía,George Allen & Unwin,Nuevo,True,10
+4,Fahrenheit 451,1953,256,Ciencia Ficción,Ballantine Books,Usado,False,1
+5,Crónica de una muerte anunciada,1981,144,Narrativa,Editorial Oveja Negra,Nuevo,True,7
+6,La sombra del viento,2001,565,Misterio,Planeta,Nuevo,True,3
+7,El Principito,1943,96,Ficción,Reynal & Hitchcock,Usado,True,8
+8,Los pilares de la tierra,1989,1104,Histórico,William Morrow,Nuevo,True,2
+9,It,1986,1138,Terror,Viking,Usado,False,1
+10,El nombre del viento,2007,662,Fantasía,DAW Books,Nuevo,True,4
+
