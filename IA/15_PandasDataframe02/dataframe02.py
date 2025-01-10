@@ -104,14 +104,85 @@ print(f"Resultados filtrados para Marta y Carmen\n{df_marta_carmen}\n")
 
 # 3. Pivotar
 asignatura = ["BD", "PR", "SI", "LM", "ED"]
+# Tenemos que unir las asignaturas bajo el nombre Asignatura para poder hacer la pivotacion correctamente
 df_pivotado = df_alumnos.melt(
     id_vars=["Alumno"], var_name="Asignatura", value_name="Calificación"
 )
-print(df_pivotado)
 
 df_pivotado = df_pivotado.pivot_table(
     index="Alumno",
     columns="Asignatura",
     aggfunc="mean",
 )
-print(df_pivotado)
+print(f"Pivotado por asignaturas\n{df_pivotado}\n")
+
+# 4. Ordenar
+# Ordenado por nombre de alumno
+df_ordenado = df_alumnos.sort_values(by=["Alumno"])
+print(f"Ordenado por nombre de alumno\n{df_ordenado}\n")
+# Ordenado por nota de programacion ascendente
+df_ordenado = df_alumnos.sort_values(by=["PR"], ascending=True)
+print(f"Ordenado por nota de programacion ascendente\n{df_ordenado}\n")
+# Ordenado por nota de base de datps descendente
+df_ordenado = df_alumnos.sort_values(by=["BD"], ascending=False)
+print(f"Ordenado por nota de base de datos descendente\n{df_ordenado}\n")
+
+# 5. Agrupar
+# Promedio de notas de cada alumno
+# Es necesario que las calificaciones esten agrupadas en un campo,
+# puesto que no se pueden pasar como un array
+df_agrupado = df_alumnos.melt(
+    id_vars=["Alumno"], var_name="Asignatura", value_name="Calificación"
+)
+df_agrupado = df_agrupado.groupby(by=["Alumno"])["Calificación"].mean()
+
+print(f"Promedio de notas de cada alumno\n{df_agrupado}\n")
+
+# Promedio de notas por asignatura
+df_agrupado = df_alumnos.melt(
+    id_vars=["Alumno"], var_name="Asignatura", value_name="Calificación"
+)
+df_agrupado = df_agrupado.groupby(by=["Asignatura"])["Calificación"].mean()
+print(f"Promedio de notas por asignatura\n{df_agrupado}\n")
+
+# Alumno con mejor promedio
+df_agrupado = df_alumnos.melt(
+    id_vars=["Alumno"], var_name="Asignatura", value_name="Calificación"
+)
+df_agrupado = df_agrupado.groupby(by=["Alumno"])["Calificación"].mean()
+mejor_alumo = df_agrupado.sort_values(ascending=False).head(1)
+print(f"Alumno con mejor promedio\n{mejor_alumo}\n")
+
+# 6. Concatenar
+
+# Generar índices aleatorios para hacer NaN
+porcentaje_faltante = 0.2
+total_celdas = df_alumnos.shape[0] * df_alumnos.shape[1] - df_alumnos.shape[0]
+total_faltantes = int(total_celdas * porcentaje_faltante)
+
+indices_faltantes = np.random.choice(
+    df_alumnos.index.repeat(df_alumnos.shape[1] - 1), total_faltantes, replace=True
+)
+columnas_faltantes = np.random.choice(
+    df_alumnos.columns[1:], total_faltantes, replace=True
+)  # Excluyendo 'Alumno'
+
+df_huecos = df_alumnos.copy()
+for i, col in zip(indices_faltantes, columnas_faltantes):
+    df_huecos.loc[i, col] = np.nan
+
+df_completo = pd.concat(
+    [df_alumnos, df_huecos],
+    ignore_index=True,
+)
+print(f"DF con datos completos y faltantes\n{df_completo}\n")
+
+df_completo = df_completo[
+    df_completo["BD"].notna()
+    & df_completo["PR"].notna()
+    & df_completo["LM"].notna()
+    & df_completo["SI"].notna()
+    & df_completo["ED"].notna() 
+]
+print(f"DF filtrado\n{df_completo}\n")
+
