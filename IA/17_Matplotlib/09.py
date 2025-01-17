@@ -14,7 +14,7 @@ import pandas as pd
 
 data = pd.read_csv("./ficheros/titanic.csv")
 
-fig, diagrama = plt.subplots(3, 2)
+fig, diagrama = plt.subplots(3, 2, figsize=(15, 10))
 # 1 --------------------
 fallecidos = data[data["Survived"] == False]
 supervivientes = data[data["Survived"] == True]
@@ -44,17 +44,19 @@ diagrama[1, 0].set_title("Personas por clase")
 
 # 4 --------------------
 
+supervivientes_clase = supervivientes.groupby("Pclass").size()
+fallecidos_clase = fallecidos.groupby("Pclass").size()
 
 diagrama[1, 1].bar(
     (np.arange(len(clases)) + 1) - 0.4 / 2,
-    supervivientes_tot,
+    supervivientes_clase,
     0.4,
     label="Supervivientes",
     color="orange",
 )
 diagrama[1, 1].bar(
     (np.arange(len(clases)) + 1) + 0.4 / 2,
-    fallecidos_tot,
+    fallecidos_clase,
     0.4,
     label="Fallecidos",
     color="g",
@@ -67,18 +69,18 @@ diagrama[1, 1].set_title("Supervivientes y fallecidos por clase")
 
 diagrama[2, 0].bar(
     (np.arange(len(clases)) + 1),
-    fallecidos_tot,
+    fallecidos_clase,
     0.4,
-    bottom=supervivientes_tot,
-    yerr=fallecidos_tot / 10,
+    bottom=supervivientes_clase,
+    yerr=fallecidos_clase / 10,
     label="Fallecidos",
     color="g",
 )
 diagrama[2, 0].bar(
     (np.arange(len(clases)) + 1),
-    supervivientes_tot,
+    supervivientes_clase,
     0.4,
-    yerr=supervivientes_tot / 10,
+    yerr=supervivientes_clase / 10,
     label="Supervivientes",
     color="orange",
 )
