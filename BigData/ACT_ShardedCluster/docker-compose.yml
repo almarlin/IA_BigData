@@ -1,0 +1,170 @@
+services:
+
+  mongos1:
+    container_name: mongos1
+    image: mongo
+    volumes:
+      - ./router-init.js:/scripts/router-init.js
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27117:27017
+    entrypoint: [ "/usr/bin/mongos", "--port", "27017", "--configdb", "rs-config-server/configserver1:27017,configserver2:27017,configserver3:27017", "--bind_ip_all" ]
+
+  mongos2:
+    container_name: mongos2
+    image: mongo
+    volumes:
+      - ./router-init.js:/scripts/router-init.js
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27118:27017
+    entrypoint: [ "/usr/bin/mongos", "--port", "27017", "--configdb", "rs-config-server/configserver1:27017,configserver2:27017,configserver3:27017", "--bind_ip_all" ]
+
+  mongos3:
+    container_name: mongos3
+    image: mongo
+    volumes:
+      - ./router-init.js:/scripts/router-init.js
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27119:27017
+    entrypoint: [ "/usr/bin/mongos", "--port", "27017", "--configdb", "rs-config-server/configserver1:27017,configserver2:27017,configserver3:27017", "--bind_ip_all" ]
+
+  configserver1:
+    container_name: configserver1 
+    image: mongo
+    volumes:
+      - ./configserver-init.js:/scripts/configserver-init.js
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27120:27017
+    entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--configsvr", "--replSet", "rs-config-server", "--bind_ip_all" ]
+    links:
+      - mongo-shard1a
+      - mongo-shard2a
+      - mongo-shard3a
+
+  configserver2:
+    container_name: configserver2 
+    image: mongo
+    volumes:
+      - ./configserver-init.js:/scripts/configserver-init.js
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27121:27017
+    entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--configsvr", "--replSet", "rs-config-server", "--bind_ip_all" ]
+    links:
+      - mongo-shard1a
+      - mongo-shard2a
+      - mongo-shard3a
+
+  configserver3:
+    container_name: configserver3 
+    image: mongo
+    volumes:
+      - ./configserver-init.js:/scripts/configserver-init.js
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27122:27017
+    entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--configsvr", "--replSet", "rs-config-server", "--bind_ip_all" ]
+    links:
+      - mongo-shard1a
+      - mongo-shard2a
+      - mongo-shard3a
+
+  mongo-shard1a:
+    container_name: mongo-shard1a
+    image: mongo
+    volumes:
+      - ./shard1-init.js:/scripts/shard1-init.js
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27123:27017
+    entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--shardsvr", "--bind_ip_all", "--replSet", "shard1" ]
+
+  mongo-shard1b:
+    container_name: mongo-shard1b
+    image: mongo
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27124:27017
+    entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--shardsvr", "--bind_ip_all", "--replSet", "shard1" ]
+
+  mongo-shard1c:
+    container_name: mongo-shard1c
+    image: mongo
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27125:27017
+    entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--shardsvr", "--bind_ip_all", "--replSet", "shard1" ]
+
+  mongo-shard2a:
+    container_name: mongo-shard2a
+    image: mongo
+    volumes:
+      - ./shard2-init.js:/scripts/shard2-init.js
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27126:27017
+    entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--shardsvr", "--bind_ip_all", "--replSet", "shard2" ]
+
+  mongo-shard2b:
+    container_name: mongo-shard2b
+    image: mongo
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27127:27017
+    entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--shardsvr", "--bind_ip_all", "--replSet", "shard2" ]
+
+  mongo-shard2c:
+    container_name: mongo-shard2c
+    image: mongo
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27128:27017
+    entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--shardsvr", "--bind_ip_all", "--replSet", "shard2" ]
+
+  mongo-shard3a:
+    container_name: mongo-shard3a
+    image: mongo
+    volumes:
+      - ./shard3-init.js:/scripts/shard3-init.js
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27129:27017
+    entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--shardsvr", "--bind_ip_all", "--replSet", "shard3" ]
+
+  mongo-shard3b:
+    container_name: mongo-shard3b
+    image: mongo
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27130:27017
+    entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--shardsvr", "--bind_ip_all", "--replSet", "shard3" ]
+
+  mongo-shard3c:
+    container_name: mongo-shard3c
+    image: mongo
+    networks:
+      - network-shardedcluster
+    ports:
+      - 27131:27017
+    entrypoint: [ "/usr/bin/mongod", "--port", "27017", "--shardsvr", "--bind_ip_all", "--replSet", "shard3" ]
+
+networks:
+  network-shardedcluster:
+    driver: bridge
