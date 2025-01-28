@@ -15,12 +15,12 @@ y = df_cardiaca["enfermedad_cardiaca"] # Datos a predecir
 
 
 # Seleccionamos el 80% de los datos para entrenar al modelo y el 20% restante servirá para ponerlo a prueba
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
 
 # Normalizamos los datos
 scaler = StandardScaler()
-x_train = scaler.fit_transform(x_train)
-x_test = scaler.transform(x_test)
+x_train = scaler.fit_transform(X_train)
+x_test = scaler.transform(X_test)
 
 # Creamos y entrenamos el modelo
 model = LogisticRegression()
@@ -50,7 +50,7 @@ coef_df = pd.DataFrame(coef.T, columns=['Coeficiente'], index=x.columns)
 print(f"Coeficientes de las características:\n{coef_df}")
 
 # Visualización de la distribución de predicciones y resultados reales
-fig, diagrama = plt.subplots(3, 1, figsize=(15, 15))
+fig, diagrama = plt.subplots(3, 1, figsize=(15,15))
 
 # Distribución de las predicciones
 diagrama[0].bar(['No enfermo', 'Enfermo'], np.bincount(y_pred))
@@ -75,6 +75,6 @@ diagrama[2].set_xticklabels(coef_df.index, rotation=45)
 # Mostrar los gráficos
 plt.tight_layout()
 
-plt.savefig('grafico_resultados.png', format='png')
+plt.savefig('regresion_resultados.png', format='png')
 
 plt.show()
