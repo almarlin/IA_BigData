@@ -1,4 +1,0 @@
-
-
-
-docker exec -it mongos1 bash
