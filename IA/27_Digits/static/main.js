@@ -3,6 +3,10 @@ const canvas = document.getElementById('canvas');
         const clearBtn = document.getElementById('clear-btn');
         const predictionText = document.getElementById('prediction');
 
+        ctx.lineWidth= 15;
+        ctx.lineJoin = 'round'; // Uniones redondeadas
+        ctx.lineCap = 'round';  // Extremos de las líneas redondeados
+        ctx.strokeStyle = "#000000"
         // Configuración para dibujar en el canvas
         let isDrawing = false;
         let lastX = 0;
