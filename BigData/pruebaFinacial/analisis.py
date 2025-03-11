@@ -72,3 +72,30 @@ for autotext in autotexts:
 ax.legend(wedges, distribucion["Country"], title="Países", loc="center left", bbox_to_anchor=(1, 0.5))
 plt.title("Volumen de ventas por paises")
 plt.show()
+
+# 5. Análisis temporal
+# Pregunta: ¿Cómo han evolucionado las ventas a lo largo del tiempo? ¿Hay algún mes o año en particular que destaque?
+# Agrupar los datos por mes y año, y que calcular las ventas totales para cada período. Luego, que visualizar estos datos en un gráfico para observar tendencias.
+
+distribucion = pd.DataFrame()
+
+distribucion['Date'] = pd.to_datetime(data['Date'])
+distribucion["Units Sold"] = data["Units Sold"]
+# Agrupar por año y mes, y sumar los valores
+distribucion['año_mes'] = distribucion['Date'].dt.to_period('M')  # Crear una columna con año y mes
+distAgrupado = distribucion.groupby('año_mes')['Units Sold'].sum().reset_index()
+
+# Convertir 'año_mes' de Period a datetime usando 'apply' para obtener el primer día de cada mes
+distAgrupado['año_mes'] = distAgrupado['año_mes'].apply(lambda x: x.start_time)
+
+plt.plot(distAgrupado["año_mes"],distAgrupado["Units Sold"])
+plt.ylabel("Unidades vendidas")
+plt.xlabel("Periodos")
+plt.title("Temporal de ventas")
+plt.show()
+
+# 6. Análisis de productos
+# Pregunta: ¿Qué producto tiene el mayor margen de beneficio? ¿Y el menor?
+# Calcular el margen de beneficio para cada producto e identificar cuál tiene el mayor y menor margen.
+
+distribucion = pd.DataFrame()

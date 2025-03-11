@@ -25,3 +25,9 @@ El país con mayor volumen de ventas es Canadá con el 22% y el país con el men
 ![ventas](capturas/ventasPaises.png)
 
 ## 5. Análisis temporal.
+
+Se puede observar el temporal de las ventas en los últimos años (2013-2014) por meses. El gráfico muestra un patrón de subidas en el inicio del verano y el inicio del otoño (junio y octubre), recayendo los meses siguientes drásticamente.
+![temporal](capturas/temporalVentas.PNG)
+
+## 6. Análisis de productos
+
