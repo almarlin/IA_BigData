@@ -27,7 +27,37 @@ El país con mayor volumen de ventas es Canadá con el 22% y el país con el men
 ## 5. Análisis temporal.
 
 Se puede observar el temporal de las ventas en los últimos años (2013-2014) por meses. El gráfico muestra un patrón de subidas en el inicio del verano y el inicio del otoño (junio y octubre), recayendo los meses siguientes drásticamente.
+
 ![temporal](capturas/temporalVentas.PNG)
 
 ## 6. Análisis de productos
 
+Con el siguiente gráfico podemos observar que el producto que más beneficios totales que ha generado son los paseos, y el menor la carretera.
+
+![beneficiosProductos](capturas/beneficioProducto.PNG)
+
+## 7. Análisis de descuentos
+
+Con el siguiente gráfico podemos observar que se realizan más ventas con un mayor descuento, otorgando mayores beneficios.
+
+![descuentos](capturas/descuentos.PNG)
+
+## 8. Análisis de correlación
+
+La matriz de correlación nos muestra como el profit y el sale price está altamente relacionado.
+
+![matriz](capturas/matrizCorrelacion.png)
+
+## 9. Visualización de datos
+
+La matriz de correlación nos muestra como el profit y el sale price está altamente relacionado.
+
+![matriz](capturas/ventasPais.png)
+
+## 10. Conclusiones
+Mejorar la relación con el segmento "Enterprise" y aprovechar la rentabilidad del segmento "Government".
+Aumentar las ventas en mercados con menor penetración como Alemania, y reforzar la fidelización en Canadá.
+Aprovechar los picos estacionales de ventas en junio y octubre mediante promociones específicas.
+Optimizar la estrategia de descuentos para mantener un equilibrio entre ventas y rentabilidad.
+Centrarse en la promoción de productos rentables y revisar el rendimiento de productos de bajo margen.
+Explorar ajustes de precios de productos con alta demanda para mejorar los márgenes de beneficio.
