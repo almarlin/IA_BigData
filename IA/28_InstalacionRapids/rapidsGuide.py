@@ -6,6 +6,9 @@
 # $ conda config --show channel_priority
 # $ conda config --set channel_priority flexible
 
+# * For CUDA 11, run:    conda install cudatoolkit cuda-version=11
+# * For CUDA 12, run:    conda install cuda-cudart cuda-version=12
+
 # Instalar Rapids con el selector de la ruta: https://docs.rapids.ai/install/#selector 
 # Elegir la configuración deseada y ejecutar el código proporcionado en una consola nueva de ubuntu.
 # Finalmente, probar la instalacion con un fichero python de la siguiente forma:
