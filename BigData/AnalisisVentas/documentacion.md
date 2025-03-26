@@ -35,17 +35,17 @@ CALCULATE(
 ------------------------------------------------------------------------------------------------
 9_AV_AVG_Carrito = AVERAGE(retail_sales_dataset[Total Amount])
 ------------------------------------------------------------------------------------------------
-10_AV_Dia_Mayor_Volumen = CALCULATE(
-        FIRSTNONBLANK(retail_sales_dataset[Date], 1),
-        FILTER(
-            ALL(retail_sales_dataset),
-            COUNT(retail_sales_dataset[Transaction ID]) = 
-                MAXX(
-                    ALL(retail_sales_dataset[Date]),
-                    COUNT(retail_sales_dataset[Transaction ID])
-                )
-        )
-)
+10_AV_Dia_Mayor_Volumen = 
+VAR DiaMaxVentas = 
+    TOPN(
+        1, 
+        VALUES(retail_sales_dataset[Date]), 
+        CALCULATE( COUNT(retail_sales_dataset[Transaction ID]) ), 
+        DESC
+    )
+// Funciona tanto MINX como MAXX pues DiaMaxVentas es una tabla con un solo registro. 
+// Se selecciona la fecha minima (retail_sales_dataset[Date]) de la tabla DiaMaxVentas 
+RETURN MINX(DiaMaxVentas,retail_sales_dataset[Date])
 ------------------------------------------------------------------------------------------------
 ```
 ## 2. Análisis de Clientes y Comportamiento de Compra (AC)
@@ -92,14 +92,18 @@ CALCULATE(
 6_AC_Frecuencia_Promedio = AVERAGE(retail_sales_dataset[Days Since Last Purchase])
 ------------------------------------------------------------------------------------------------
 7_AC_Ciudad_Mas_Compras = 
-CALCULATE(
-    FIRSTNONBLANK(retail_sales_dataset[City],1),
-    FILTER(
-        VALUES(retail_sales_dataset[City]),
-        CALCULATE(SUM(retail_sales_dataset[Total Amount])) = 
-        MAXX(VALUES(retail_sales_dataset[City]), CALCULATE(SUM(retail_sales_dataset[Total Amount])))
-    )
-)
+    VAR ciudadTop = 
+        TOPN(
+            1,
+            SUMMARIZE(
+                retail_sales_dataset,
+                retail_sales_dataset[City],
+                "ciudad",COUNTROWS(retail_sales_dataset)
+            ),
+            [ciudad],
+            DESC
+        )
+    return MAXX(ciudadTop,retail_sales_dataset[City])
 ------------------------------------------------------------------------------------------------
 8_AC_Tasa de conversion = (No hay visitas a productos)
 ------------------------------------------------------------------------------------------------
@@ -123,17 +127,16 @@ CALCULATE(
 ```
 ## 3. Análisis de Productos (AP)
 ```
-1_AP_Productos_No_Vendidos = FILTER(
-        ALL(retail_sales_dataset[Product]),
-        NOT(
-            retail_sales_dataset[Product] IN 
-            VALUES(retail_sales_dataset[Product])
-        )
+1_AP_Productos_No_Vendidos = 
+EXCEPT( 
+    ALL(retail_sales_dataset[Product]), 
+    VALUES(retail_sales_dataset[Product]) 
 )
 ------------------------------------------------------------------------------------------------
-2_AP_Promedio_Vendidos = AVERAGEX(
+2_AP_Promedio_Vendidos = 
+AVERAGEX(
     VALUES(retail_sales_dataset[Product]),
-    CALCULATE(sum(retail_sales_dataset[Price per Unit]))
+    CALCULATE(AVERAGE(retail_sales_dataset[Price per Unit]))
 )
 ------------------------------------------------------------------------------------------------
 3_AP_Producto_Mayor_Ganancia = CALCULATE(
@@ -153,9 +156,9 @@ CALCULATE(
     CALCULATE(COUNT(retail_sales_dataset[Transaction ID]))
 )
 ------------------------------------------------------------------------------------------------
-5_AP_Productos_Mas_Juntos = (No se incluyen listas de productos comprados juntos)
+5_AP_Productos_Mas_Juntos = [No se incluyen listas de productos comprados juntos]
 ------------------------------------------------------------------------------------------------
-6_AP_Devoluciones = (No se incluyen devoluciones)
+6_AP_Devoluciones = [No se incluyen devoluciones]
 ------------------------------------------------------------------------------------------------
 7_AP_Stock_Promedio = AVERAGE(retail_sales_dataset[Stock])
 ------------------------------------------------------------------------------------------------
@@ -179,7 +182,7 @@ RETURN
     VALUES(retail_sales_dataset[Product])
 )
 ------------------------------------------------------------------------------------------------
-10_AP_Producto_Mayor_Descuento = (No se indica la cantidad de descuento aplicado al producto)
+10_AP_Producto_Mayor_Descuento = [No se indica la cantidad de descuento aplicado al producto]
 ------------------------------------------------------------------------------------------------
 ```
 ## 4. Análisis Temporal (AT)
@@ -190,17 +193,14 @@ RETURN
 )
 ------------------------------------------------------------------------------------------------
 2_AT_Dia_Semana_Mas_Ventas = 
-CALCULATE(
-        FIRSTNONBLANK(retail_sales_dataset[Date], 1),
-        FILTER(
-            retail_sales_dataset,
-            retail_sales_dataset[Total Amount] = 
-                MAXX(
-                    ALL(retail_sales_dataset),
-                    retail_sales_dataset[Total Amount]
-                )
-        )
-)
+VAR diaMaxVentas =
+    TOPN(
+        1,
+        VALUES(retail_sales_dataset[diaSemana]),
+        CALCULATE(SUM(retail_sales_dataset[Total Amount])),
+        DESC
+    )
+RETURN MINX(diaMaxVentas,retail_sales_dataset[diaSemana])
 ------------------------------------------------------------------------------------------------
 3_AT_Crecimiento_por_Mes = CALCULATE(
     COUNT(retail_sales_dataset[Transaction ID]),
@@ -223,12 +223,17 @@ CALCULATE(
 ------------------------------------------------------------------------------------------------
 5_AT_Temporada_mas_ventas = 
 VAR temporada = 
-TOPN( 1, SUMMARIZE(retail_sales_dataset,
-retail_sales_dataset[Date].[Trimestre],
-"Ventas",[Ventas_por_temporada]),
-[Ventas_por_temporada],
-DESC)
-RETURN FIRSTNONBLANK(SELECTCOLUMNS(temporada,"Trimestre",retail_sales_dataset[Date].[Trimestre]),1)
+    TOPN( 
+        1, 
+        SUMMARIZE(
+            retail_sales_dataset,
+            retail_sales_dataset[Date].[Trimestre],
+            "Ventas",SUM(retail_sales_dataset[Total Amount])
+        ),
+        [Ventas],
+        DESC
+    )
+RETURN MINX(temporada,retail_sales_dataset[Date].[Trimestre])
 ------------------------------------------------------------------------------------------------
 6_AT_Diferencia_laboral_finde = 
 VAR laboral = 
@@ -285,20 +290,100 @@ TOPN(
     ASC
 )
 ------------------------------------------------------------------------------------------------
-
+3_ALI = []
 ------------------------------------------------------------------------------------------------
-
+4_ALI = [No hay fecha de reposición de productos]
 ------------------------------------------------------------------------------------------------
-
+5_ALI = [No hay fecha de entrega]
 ------------------------------------------------------------------------------------------------
-
+6_ALI = [No hay fecha de entrega ni fecha de entrega prevista]
 ------------------------------------------------------------------------------------------------
-
+7_ALI_Productos_Agotados = 
+CALCULATE(
+    DISTINCTCOUNT(retail_sales_dataset[Product]),
+    retail_sales_dataset[Stock] = 0,
+    retail_sales_dataset[Date] >= retail_sales_dataset[Date] - 30
+)
 ------------------------------------------------------------------------------------------------
-
+8_ALI_Categorias_Menos_Stock = 
+TOPN( 
+    1, 
+    VALUES(retail_sales_dataset[Product Category]), 
+    CALCULATE( SUM(retail_sales_dataset[Stock]) ), 
+    ASC 
+)
 ------------------------------------------------------------------------------------------------
+9_ALI_Comparacion_Demanda_Historica = 
+// Cogemos la fecha más actual del producto a comparar su demanda
+VAR fechaMax = 
+CALCULATE(
+    MAX(retail_sales_dataset[Date]),
+    retail_sales_dataset[Product] = "Samsung Galaxy S21 Ultra"
+)
+// Establecemos una fecha límite
+VAR FechaLimite = fechaMax - 90
+// Calculamos la demanda promedio con AVG filtrando por producto y fecha
+VAR DemandaPromedio = 
+    CALCULATE(
+        AVERAGE( retail_sales_dataset[Quantity] ),  
+        retail_sales_dataset[Product] = "Samsung Galaxy S21 Ultra",
+        retail_sales_dataset[Date] >= FechaLimite
+    )
+// Recogemos el stock actual con MAX filtrando por producto y fecha
+VAR StockActual = 
+    CALCULATE(
+        MAX( retail_sales_dataset[Stock] ),  
+        retail_sales_dataset[Product] = "Samsung Galaxy S21 Ultra",
+        retail_sales_dataset[Date] = fechaMax
+    )
+// Calculamos la cobertura de días dividiendo el stock entre la demanda diaria promedio
+VAR CoberturaDias = 
+    IF(DemandaPromedio > 0, StockActual / DemandaPromedio, BLANK())
+// La demanda futura será 30 veces (días) la demanda promedio
+VAR DemandaFutura = DemandaPromedio * 30
+// Finalmente la cantidad a reponer será la diferencia de la demanda futura con el stock actual
+VAR CantidadReponer = MAX(0, DemandaFutura - StockActual)
 
+RETURN 
+IF(
+    ISBLANK(CoberturaDias), 
+    BLANK(), 
+    "Cobertura: " & FORMAT(CoberturaDias, "0.0") & " días | Reponer: " & FORMAT(CantidadReponer, "0") 
+)
 ------------------------------------------------------------------------------------------------
+10_ALI = [No hay pedidos de reposición de inventario]
+------------------------------------------------------------------------------------------------
+```
+## 6. Análisis Complejo y Predictivo (ACP) -- Extra + 1 punto
 
+```
+------------------------------------------------------------------------------------------------
+2_ACP_Prediccion_Ventas = 
+// Creamos la tabla datos. 
+    VAR datos =
+        ADDCOLUMNS(
+            // Agrupamos por año y mes y agregamos las columnas X e Y a la tabla datos
+            SUMMARIZE(
+                retail_sales_dataset,
+                retail_sales_dataset[Date].[Año],
+                retail_sales_dataset[NumMes]
+            ),
+            // Transforma año y mes a un único numero (en meses)
+            "X", retail_sales_dataset[Date].[Año] * 12 + retail_sales_dataset[NumMes],
+            // El total de ventas de ese mes
+            "Y", CALCULATE(SUM(retail_sales_dataset[Total Amount]))
+        )
+    // Calcula la regresión lineal de las ventas respecto a los meses
+    VAR regresion = LINESTX(datos, [Y], [X])  
+
+    // Recogemos la pendiente y la interseccion de la tabla que devuelve la regresion
+    VAR pendiente = SELECTCOLUMNS(regresion, "Slope", [Slope1])
+    VAR interseccion = SELECTCOLUMNS(regresion, "Intercept", [Intercept])
+
+    // Encuentra el mes mas reciente de los datos
+    VAR ultimoX = MAXX(datos, [X])
+
+    // Predecimos las ventas del proximo mes aplicando la pendiente y sumando la interseccion
+    RETURN pendiente * (ultimoX + 1) + interseccion
 ------------------------------------------------------------------------------------------------
 ```
