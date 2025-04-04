@@ -1,0 +1,16 @@
+,Tiempo,Temperatura,Luz,Humedad %,CO2,Acciones: 
+0,2025-04-04 17:53:57,35,418,90,966,Encendiendo aire acondicionado; Apagando luces; Desactivando humidificador; Puede cerrar las ventanas
+1,2025-04-04 18:03:57,32,296,97,418,Encendiendo aire acondicionado; Apagando luces; Desactivando humidificador; Puede cerrar las ventanas
+2,2025-04-04 18:13:57,3,176,65,514,Encendiendo calefacción; Encendiendo luces; Desactivando humidificador; Puede cerrar las ventanas
+3,2025-04-04 18:23:57,7,4,67,607,Encendiendo calefacción; Encendiendo luces; Desactivando humidificador; Puede cerrar las ventanas
+4,2025-04-04 18:33:57,29,550,67,612,Encendiendo aire acondicionado; Apagando luces; Desactivando humidificador; Puede cerrar las ventanas
+5,2025-04-04 18:43:57,17,734,68,781,Encendiendo calefacción; Apagando luces; Desactivando humidificador; Puede cerrar las ventanas
+6,2025-04-04 18:53:57,38,707,86,764,Encendiendo aire acondicionado; Apagando luces; Desactivando humidificador; Puede cerrar las ventanas
+7,2025-04-04 19:03:57,34,419,90,1188,Encendiendo aire acondicionado; Apagando luces; Desactivando humidificador; Ventilando habitación
+8,2025-04-04 19:13:57,6,108,37,696,Encendiendo calefacción; Encendiendo luces; Activando humidificador; Puede cerrar las ventanas
+9,2025-04-04 19:23:57,18,323,46,390,Aire condicionado quitado; Apagando luces; Puede cerrar las ventanas
+10,2025-04-04 19:33:57,18,115,65,1078,Aire condicionado quitado; Encendiendo luces; Desactivando humidificador; Ventilando habitación
+11,2025-04-04 19:43:57,5,89,18,492,Encendiendo calefacción; Encendiendo luces; Activando humidificador; Puede cerrar las ventanas
+12,2025-04-04 19:53:57,39,458,76,1183,Encendiendo aire acondicionado; Apagando luces; Desactivando humidificador; Ventilando habitación
+13,2025-04-04 20:03:57,18,649,9,1188,Aire condicionado quitado; Apagando luces; Activando humidificador; Ventilando habitación
+14,2025-04-04 20:13:57,31,528,0,1064,Encendiendo aire acondicionado; Apagando luces; Activando humidificador; Ventilando habitación
