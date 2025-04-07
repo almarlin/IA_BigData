@@ -1,16 +1,15 @@
 Causas (lista reducida),Sexo,Tamaño de municipio y capital de residencia,Edad,Total
-001-102 I-XXII.Todas las causas,Ambos sexos,Total,Todas las edades,223.278
-001-008 I.Enfermedades infecciosas y parasitarias,Ambos sexos,Total,Todas las edades,6.42
-009-041 II.Tumores,Ambos sexos,Total,Todas las edades,57.117
-"042-043 III.Enfermedades de la sangre y de los órganos hematopoyéticos, y ciertos trastornos que afectan al mecanismo de la inmunidad",Ambos sexos,Total,Todas las edades,1.068
-"044-045 IV.Enfermedades endocrinas, nutricionales y metabólicas",Ambos sexos,Total,Todas las edades,7.706
-046-049 V.Trastornos mentales y del comportamiento,Ambos sexos,Total,Todas las edades,11.773
-050-052 VI-VIII.Enfermedades del sistema nervioso y de los órganos de los sentidos,Ambos sexos,Total,Todas las edades,13.425
-053-061 IX.Enfermedades del sistema circulatorio,Ambos sexos,Total,Todas las edades,58.494
-062-067 X.Enfermedades del sistema respiratorio,Ambos sexos,Total,Todas las edades,28.807
-068-072 XI.Enfermedades del sistema digestivo,Ambos sexos,Total,Todas las edades,11.387
-074-076 XIII.Enfermedades del sistema osteomuscular y del tejido conjuntivo,Ambos sexos,Total,Todas las edades,2.642
-077-080 XIV.Enfermedades del sistema genitourinario,Ambos sexos,Total,Todas las edades,9.092
-"083-085 XVII.Malformaciones congénitas, deformidades y anomalías cromosómicas",Ambos sexos,Total,Todas las edades,480.0
-"086-089 XVIII.Síntomas, signos y hallazgos anormales clínicos y de laboratorio, no clasificados en otra parte",Ambos sexos,Total,Todas las edades,4.948
-090-102 XX.Causas externas de mortalidad,Ambos sexos,Total,Todas las edades,8.624
+001-008 I.Enfermedades infecciosas y parasitarias,Ambos sexos,Total,Todas las edades,6420
+009-041 II.Tumores,Ambos sexos,Total,Todas las edades,57117
+"042-043 III.Enfermedades de la sangre y de los órganos hematopoyéticos, y ciertos trastornos que afectan al mecanismo de la inmunidad",Ambos sexos,Total,Todas las edades,1068
+"044-045 IV.Enfermedades endocrinas, nutricionales y metabólicas",Ambos sexos,Total,Todas las edades,7706
+046-049 V.Trastornos mentales y del comportamiento,Ambos sexos,Total,Todas las edades,11773
+050-052 VI-VIII.Enfermedades del sistema nervioso y de los órganos de los sentidos,Ambos sexos,Total,Todas las edades,13425
+053-061 IX.Enfermedades del sistema circulatorio,Ambos sexos,Total,Todas las edades,58494
+062-067 X.Enfermedades del sistema respiratorio,Ambos sexos,Total,Todas las edades,28807
+068-072 XI.Enfermedades del sistema digestivo,Ambos sexos,Total,Todas las edades,11387
+074-076 XIII.Enfermedades del sistema osteomuscular y del tejido conjuntivo,Ambos sexos,Total,Todas las edades,2642
+077-080 XIV.Enfermedades del sistema genitourinario,Ambos sexos,Total,Todas las edades,9092
+"083-085 XVII.Malformaciones congénitas, deformidades y anomalías cromosómicas",Ambos sexos,Total,Todas las edades,480
+"086-089 XVIII.Síntomas, signos y hallazgos anormales clínicos y de laboratorio, no clasificados en otra parte",Ambos sexos,Total,Todas las edades,4948
+090-102 XX.Causas externas de mortalidad,Ambos sexos,Total,Todas las edades,8624
