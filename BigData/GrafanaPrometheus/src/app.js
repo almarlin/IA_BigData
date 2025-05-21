@@ -16,6 +16,6 @@ app.get('/metrics', async (req, res) => {
   res.end(await register.metrics());
 });
 
-app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
+app.listen(port, '0.0.0.0',() => {
+  console.log(`Servidor escuchando en http://0.0.0.0:${port}`);
 });
